@@ -64,9 +64,10 @@ maybe when im bothered but currently your going to have to do it like this,
 unless you would be happy convert it into a js file so in can actually run it on websites
 
 ## Originality
-Is this my idea?
+#### Is this my idea?
 no not at all. im pretty sure this has been done multiple times before 
-Is this my code?
+
+#### Is this my code?
 yes.
 
 ### please refer to the license if you want to see what you are able to do with this code
