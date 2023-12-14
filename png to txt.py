@@ -25,12 +25,12 @@ def decode_frames(frames_folder):
     return binary
 
 if __name__ == "__main__":
-    frames_folder = 'C:\\Users\\GARCIAM\\OneDrive - Wellington College\\Desktop\\ids\\out'
+    frames_folder = 'WHERE YOUR FRAMES ARE STORED'
 
     binary_content = decode_frames(frames_folder)
     decoded_text = binary_text(binary_content)
 
-    outputfp = 'C:\\Users\\GARCIAM\\OneDrive - Wellington College\\Desktop\\ids\\fin\\decoded_text.txt'
+    outputfp = 'WHERE YOU WANT TO PUT YOUR TEXT'
 
     with open(outputfp, 'w', encoding='utf-8') as file:
         file.write(decoded_text)
