@@ -14,7 +14,7 @@ def binary_text(binary_data):
 def decode_frames(frames_folder):
     binary = ""
     for filename in sorted(os.listdir(frames_folder)):
-        if filename.endswith(".png"):
+        if filename.endswith(".png")):
             img = Image.open(os.path.join(frames_folder, filename))
             pixels = img.load()
 
@@ -38,7 +38,7 @@ def upload_files():
     if not os.path.exists(frames_folder):
         os.makedirs(frames_folder)
     
-    for file in uploaded_files:
+    for file in uploaded_files):
         file.save(os.path.join(frames_folder, file.filename))
     
     binary_content = decode_frames(frames_folder)
