@@ -1,5 +1,8 @@
+from flask import Flask, request, render_template, send_file
 from PIL import Image
 import os
+
+app = Flask(__name__)
 
 def binary_text(binary_data):
     text = ""
@@ -24,15 +27,28 @@ def decode_frames(frames_folder):
 
     return binary
 
-if __name__ == "__main__":
-    frames_folder = 'WHERE YOUR FRAMES ARE STORED'
+@app.route('/')
+def index():
+    return render_template('index.html')
 
+@app.route('/upload', methods=['POST'])
+def upload_files():
+    uploaded_files = request.files.getlist("file[]")
+    frames_folder = 'frames'
+    if not os.path.exists(frames_folder):
+        os.makedirs(frames_folder)
+    
+    for file in uploaded_files:
+        file.save(os.path.join(frames_folder, file.filename))
+    
     binary_content = decode_frames(frames_folder)
     decoded_text = binary_text(binary_content)
-
-    outputfp = 'WHERE YOU WANT TO PUT YOUR TEXT'
-
+    
+    outputfp = 'output.txt'
     with open(outputfp, 'w', encoding='utf-8') as file:
         file.write(decoded_text)
+    
+    return send_file(outputfp, as_attachment=True)
 
-    print(f"Decoded text saved to: {outputfp}")
+if __name__ == "__main__":
+    app.run(debug=True)
